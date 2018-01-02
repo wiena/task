@@ -1,0 +1,33 @@
+TASK 2.
+
+--First sql I would go with this:
+
+SELECT sum('AP Amount (£)') AS Result
+FROM CSV
+GROUP BY 'Department family';
+
+/****************************OR IN PANDAS *********************************/
+
+import Pandas as pd
+
+data = pd.read_csv(path, thousands=',', encoding='ISO-8859-1')
+data.groupby(['Department family'])['AP Amount (£)'].sum()
+
+/***************************************************************************/
+
+--Second SQL I would go with this:
+
+SELECT sum('AP Amount (£)') AS Result
+FROM CSV
+GROUP BY 'Department family', 'Expense Type';
+
+
+/****************************OR IN PANDAS *********************************/
+import Pandas as pd
+
+data = pd.read_csv(path, thousands=',', encoding='ISO-8859-1')
+data.groupby(['Expense Type', 'Department family'])['AP Amount (£)'].sum()
+
+/***************************************************************************/
+
+
